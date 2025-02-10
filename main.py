@@ -69,6 +69,6 @@ def start_bot():
     threading.Thread(target=bot.polling, kwargs={"none_stop": True, "interval": 0}).start()
 
 # Iniciar el servidor Flask
-if name == '__main__':
+if __name__ == '__main__':
     start_bot()
     app.run(host='0.0.0.0', port=5000)
