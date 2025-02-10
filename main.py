@@ -60,7 +60,7 @@ def handle_advantages(call):
     
     bot.send_message(call.message.chat.id, advantages_message)
 
-if name == "__main__":
+if __name__ == "__main__":
     bot.remove_webhook()
     bot.set_webhook(url=WEBHOOK_URL)  
     app.run(host="0.0.0.0", port=10000)
