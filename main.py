@@ -1,19 +1,8 @@
 import telebot
-from flask import Flask, jsonify
-import threading
 
-# Inicializar Flask
-app = Flask(__name__)
-
-# Inicializar el bot de Telegram
 bot = telebot.TeleBot("7769430876:AAEYNrldkEY5REQ3XZj5VFMxDb0aHpy6pyI")
 
 ADMIN_CHAT_ID = '818966535'
-
-# Endpoint para el ping
-@app.route('/ping', methods=['GET'])
-def ping():
-    return jsonify({"status": "ok"}), 200
 
 # Comando /start
 @bot.message_handler(commands=['start'])
@@ -22,9 +11,9 @@ def send_welcome(message):
         "🌟 ¡Bienvenido a CubaWeb! 🌟\n\n"
         "¿Tienes un negocio y necesitas una página web profesional que te ayude a crecer? 🚀\n\n"
         "En CubaWeb, creamos soluciones digitales para que te destaques de la competencia. 😍\n\n"
-        "🎯 ¡Es momento de transformar tu presencia en línea! 🖥\n\n"
+        "🎯 ¡Es momento de transformar tu presencia en línea! 🖥️\n\n"
         "🔹 Solicita nuestro servicio con un clic.\n"
-        "🔹 Descubre por qué tener una web te cambiará la vida.**\n"
+        "🔹 **Descubre por qué tener una web te cambiará la vida.**\n"
         "⬇️ ¡Elige una opción abajo! ⬇️"
     )
 
@@ -58,17 +47,11 @@ def handle_advantages(call):
         "🔹 Mayor alcance: Tu negocio llega a clientes fuera de tu zona. 🌍\n"
         "🔹 Más ventas: Puedes vender productos o servicios en línea. 💰\n"
         "🔹 Publicidad efectiva: Integración con redes sociales y Google para más visibilidad. 🚀\n\n"
-        "📩 **¡No pierdas más oportunidades! Solicita tu web hoy mismo."
+        "📩 **¡No pierdas más oportunidades! Solicita tu web hoy mismo.**"
     )
     
     bot.send_message(call.message.chat.id, advantages_message)
 
-# Iniciar el bot y el servidor Flask
-def start_bot():
-    # Iniciar el bot en un hilo separado
-    threading.Thread(target=bot.polling, kwargs={"none_stop": True, "interval": 0}).start()
+# Iniciar el bot
+bot.polling(none_stop=True, interval=0)
 
-# Iniciar el servidor Flask
-if __name__ == '__main__':
-    start_bot()
-    app.run(host='0.0.0.0', port=5000)
