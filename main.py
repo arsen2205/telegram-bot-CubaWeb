@@ -2,7 +2,7 @@ import telebot
 from flask import Flask, request
 
 TOKEN = "7769430876:AAEYNrldkEY5REQ3XZj5VFMxDb0aHpy6pyI"
-WEBHOOK_URL = "https://tu-bot.onrender.com/" + TOKEN  # Reemplaza con tu URL en Render
+WEBHOOK_URL = "https://telegram-bot-cubaweb.onrender.com/" + TOKEN  # Reemplaza con tu URL en Render
 
 bot = telebot.TeleBot(TOKEN)
 app = Flask(__name__)
